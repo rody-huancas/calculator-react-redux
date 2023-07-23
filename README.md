@@ -1,8 +1,11 @@
-# React + Vite
+# Calculadora con React, Redux Toolkit y Tailwind usando Vite.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instalación
 
-Currently, two official plugins are available:
+Para utilizar la calculadora, sigue estos pasos:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clona este repositorio en tu máquina local.
+   - git clone https://github.com/rody-huancas/calculator-react-redux.git
+2. Navega a la carpeta del proyecto en la terminal.
+3. Ejecuta el siguiente comando para instalar las dependencias:
+   - npm install
