@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BiSolidSun } from "react-icons/bi";
 import { PiMoonStarsFill } from "react-icons/pi";
@@ -14,35 +14,22 @@ const Calculator = () => {
   const dispatch = useDispatch();
   const { currentValue } = useSelector((state) => state.calculator);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [currentOperation, setCurrentOperation] = useState("");
 
   const handleButtonClick = (value) => {
     if (value === ".") {
       if (!currentValue.includes(".")) {
         dispatch(updateValue(currentValue + value));
-        setCurrentOperation(currentOperation + value);
       }
     } else if (!isNaN(value)) {
       dispatch(
         updateValue(currentValue === "0" ? value : currentValue + value)
       );
-      setCurrentOperation(currentOperation + value);
     } else if (value === "=") {
       dispatch(calculateResult());
-      setCurrentOperation("");
     } else if (value === "C") {
       dispatch(clear());
-      setCurrentOperation("");
     } else {
-      if (currentValue !== "0" && /[-+*/%]$/.test(currentValue)) {
-        const lastNumber = currentValue.split(/[-+*/%]/).slice(-1)[0];
-        const result = eval(currentValue.slice(0, -lastNumber.length)) || 0;
-        dispatch(updateValue(result + value));
-        setCurrentOperation(result + value);
-      } else {
-        dispatch(setOperator(value === "x" ? "*" : value));
-        setCurrentOperation(currentOperation + value);
-      }
+      dispatch(setOperator(value === "x" ? "*" : value));
     }
   };
 
@@ -70,7 +57,6 @@ const Calculator = () => {
             </button>
           </div>
           <div className="w-full h-[200px] p-5 flex flex-col items-end gap-3">
-            <p className="text-white text-right">{currentOperation}</p>
             <input
               type="text"
               value={currentValue}
